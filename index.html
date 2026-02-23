@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оксана Бандукова | Junior QA Manual</title>
+    <!-- Подключаем шрифт Google Fonts для красоты -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <!-- Font Awesome для иконок (телефон, почта и т.д.) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Это наш CSS-код (папка css/style.css) */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Inter", sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e9ecf2 100%);
+            color: #1e293b;
+            line-height: 1.6;
+            padding: 2rem 1.5rem;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .resume-card {
+            max-width: 1000px;
+            width: 100%;
+            background-color: #ffffff;
+            border-radius: 32px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        /* Шапка с именем и должностью */
+        .header {
+            background: linear-gradient(105deg, #1e293b 0%, #2d3a4f 100%);
+            color: white;
+            padding: 2.5rem 3rem;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+        }
+
+        .header .title {
+            font-size: 1.5rem;
+            font-weight: 400;
+            opacity: 0.9;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .header .title i {
+            font-size: 1.8rem;
+            opacity: 0.8;
+        }
+
+        /* Основная сетка: контакты слева, основной контент справа */
+        .main-content {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 0;
+        }
+
+        /* Левая колонка (контакты, образование, о себе) */
+        .sidebar {
+            background-color: #f8fafc;
+            padding: 2rem 1.8rem;
+            border-right: 1px solid #e2e8f0;
+        }
+
+        .section {
+            margin-bottom: 2rem;
+        }
+
+        .section h2 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #475569;
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #cbd5e1;
+        }
+
+        /* Контактная информация */
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            color: #334155;
+            word-break: break-word;
+        }
+
+        .contact-item i {
+            width: 24px;
+            font-size: 1.2rem;
+            color: #2563eb;
+            text-align: center;
+        }
+
+        .contact-item a {
+            color: #1e293b;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .contact-item a:hover {
+            color: #2563eb;
+            text-decoration: underline;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: #e2e8f0;
+            color: #334155;
+            padding: 0.35rem 0.9rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.2rem 0.15rem;
+        }
+
+        .education p {
+            margin-bottom: 0.3rem;
+            font-size: 0.95rem;
+        }
+
+        .education .institute {
+            font-weight: 600;
+            color: #0f172a;
+        }
+
+        .education .faculty {
+            font-size: 0.9rem;
+            color: #475569;
+        }
+
+        /* Правая колонка (опыт, о себе) */
+        .content {
+            padding: 2rem 2.5rem;
+            background-color: white;
+        }
+
+        .job {
+            margin-bottom: 2rem;
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            margin-bottom: 0.5rem;
+        }
+
+        .job-title {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #0f172a;
+        }
+
+        .company {
+            font-weight: 500;
+            color: #2563eb;
+        }
+
+        .date {
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+
+        .description {
+            list-style-type: none;
+            margin-top: 0.8rem;
+        }
+
+        .description li {
+            margin-bottom: 0.6rem;
+            font-size: 0.95rem;
+            display: flex;
+            gap: 0.7rem;
+        }
+
+        .description li i {
+            color: #2563eb;
+            font-size: 0.9rem;
+            margin-top: 0.25rem;
+            min-width: 18px;
+        }
+
+        .about-text {
+            font-size: 0.98rem;
+            color: #334155;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .skills-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .skill-tag {
+            background-color: #e2e8f0;
+            color: #1e293b;
+            padding: 0.4rem 1rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e2e8f0;
+            margin: 1.5rem 0;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+                align-items: flex-start;
+            }
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            .sidebar {
+                border-right: none;
+                border-bottom: 1px solid #e2e8f0;
+            }
+            .header {
+                padding: 1.8rem 1.5rem;
+            }
+            .header h1 {
+                font-size: 2.2rem;
+            }
+            .content {
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .job-header {
+                flex-direction: column;
+                gap: 0.25rem;
+            }
+            .contact-item {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="resume-card">
+        <!-- Шапка с именем и должностью -->
+        <div class="header">
+            <h1>Оксана Бандукова</h1>
+            <div class="title">
+                <i class="fas fa-magnifying-glass"></i>
+                Junior QA Manual
+            </div>
+        </div>
+
+        <!-- Основной блок: левая колонка (контакты) + правая колонка (опыт) -->
+        <div class="main-content">
+            <!-- Левая колонка (Sidebar) -->
+            <div class="sidebar">
+                <!-- Контакты -->
+                <div class="section">
+                    <h2><i class="fas fa-address-card" style="margin-right: 0.5rem;"></i> Контакты</h2>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:bandukova.oksana@mail.ru">bandukova.oksana@mail.ru</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <a href="tel:+79991121089">+7 (999) 112-10-89</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-telegram"></i>
+                        <a href="https://t.me/oksbanda" target="_blank">@oksbanda</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Москва</span>
+                    </div>
+                </div>
+
+                <!-- Формат работы и занятость -->
+                <div class="section">
+                    <h2><i class="fas fa-briefcase"></i> Предпочтения</h2>
+                    <div style="display: flex; flex-direction: column; gap: 0.8rem;">
+                        <div><span class="badge"><i class="fas fa-wifi"></i> Удаленно</span> <span class="badge"><i class="fas fa-building"></i> Гибрид</span></div>
+                        <div><span class="badge"><i class="fas fa-clock"></i> Полная занятость</span></div>
+                    </div>
+                </div>
+
+                <!-- Образование -->
+                <div class="section education">
+                    <h2><i class="fas fa-graduation-cap"></i> Образование</h2>
+                    <p class="institute">Российский государственный технологический университет им. К. Э. Циолковского (МАТИ)</p>
+                    <p class="faculty">Факультет: Информационные системы и технологии</p>
+                    <p style="margin-top: 0.5rem; color: #2563eb; font-weight: 500;">Высшее</p>
+                </div>
+
+                <!-- Коротко о себе (можно добавить соцсети, но оставим как краткий блок) -->
+                <div class="section">
+                    <h2><i class="fas fa-star"></i> Ключевое</h2>
+                    <div class="skills-cloud">
+                        <span class="skill-tag">Jira</span>
+                        <span class="skill-tag">TestRail</span>
+                        <span class="skill-tag">Postman</span>
+                        <span class="skill-tag">Swagger</span>
+                        <span class="skill-tag">REST API</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">Функциональное тестирование</span>
+                        <span class="skill-tag">Регрессионное тестирование</span>
+                        <span class="skill-tag">Smoke</span>
+                        <span class="skill-tag">Тест-дизайн</span>
+                        <span class="skill-tag">STLC</span>
+                        <span class="skill-tag">UI/UX</span>
+                        <span class="skill-tag">Кроссбраузерность</span>
+                    </div>
+                </div>
+            </div> <!-- Конец левой колонки -->
+
+            <!-- Правая колонка (Контент) -->
+            <div class="content">
+                <!-- О себе (развернуто) -->
+                <div class="section">
+                    <h2 style="border-bottom: 2px solid #2563eb; color: #0f172a;">👋 О себе</h2>
+                    <div class="about-text">
+                        Привет! Я Оксана, junior QA-тестировщик из Москвы. Недавно прошла курс по manual QA. Там на практике разбиралась с Jira, TestRail, Postman, Swagger. Составляла тест-кейсы и чек-листы, писала баг-репорты, проверяла UI/UX кроссбраузерно. Работала с REST API, SQL, Git. Освоила функциональное, регрессионное и smoke-тестирование, техники тест-дизайна, STLC. Теперь ищу место, где применить это на реальных проектах.
+                    </div>
+                </div>
+
+                <!-- Опыт работы -->
+                <div class="section">
+                    <h2 style="border-bottom: 2px solid #2563eb; color: #0f172a;"><i class="fas fa-briefcase"></i> Опыт работы</h2>
+
+                    <!-- МОУ Ефимовская сош -->
+                    <div class="job">
+                        <div class="job-header">
+                            <span class="job-title">Учитель информатики и физики</span>
+                            <span class="company">МОУ Ефимовская сош</span>
+                            <span class="date">настоящее время</span>
+                        </div>
+                        <ul class="description">
+                            <li><i class="fas fa-chalkboard-teacher"></i> Разрабатываю уроки по ФГОС, провожу контроль знаний учеников.</li>
+                            <li><i class="fas fa-laptop"></i> Обучаю компьютерной грамотности, работе с ПК, ОС и Microsoft Office.</li>
+                            <li><i class="fas fa-trophy"></i> Подготовила девятиклассника к районной олимпиаде по физике — 1 место.</li>
+                            <li><i class="fas fa-search"></i> Внимание к деталям помогает замечать ошибки в заданиях и экспериментах.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Nestle -->
+                    <div class="job">
+                        <div class="job-header">
+                            <span class="job-title">Специалист клиентского сервиса</span>
+                            <span class="company">Nestle</span>
+                            <span class="date">4 года</span>
+                        </div>
+                        <ul class="description">
+                            <li><i class="fas fa-handshake"></i> Вела полный цикл от встреч с гостями до финансов.</li>
+                            <li><i class="fas fa-chart-line"></i> Организовывала дегустации и мерчандайзинг, перевыполняла KPI на 100%+.</li>
+                            <li><i class="fas fa-medal"></i> Финалист национального конкурса Gold Capsule (квалификация кофе-эксперт).</li>
+                            <li><i class="fas fa-users"></i> Обучала новичков стандартам обслуживания.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Профессиональные навыки и софт (дополнительно) -->
+                <div class="section">
+                    <h2 style="border-bottom: 2px solid #2563eb; color: #0f172a;"><i class="fas fa-cogs"></i> Инструменты и методики</h2>
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1rem;">
+                        <span class="skill-tag">Jira</span>
+                        <span class="skill-tag">TestRail</span>
+                        <span class="skill-tag">Postman</span>
+                        <span class="skill-tag">Swagger</span>
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">REST API</span>
+                        <span class="skill-tag">Функциональное тестирование</span>
+                        <span class="skill-tag">Регрессионное тестирование</span>
+                        <span class="skill-tag">Smoke-тесты</span>
+                        <span class="skill-tag">Тест-дизайн</span>
+                        <span class="skill-tag">STLC</span>
+                        <span class="skill-tag">UI/UX</span>
+                        <span class="skill-tag">Чек-листы / Баг-репорты</span>
+                    </div>
+                </div>
+            </div> <!-- Конец правой колонки -->
+        </div> <!-- Конец main-content -->
+        
+        <!-- Небольшой футер (опционально) -->
+        <div style="background: #f1f5f9; padding: 1rem 2rem; text-align: center; border-top: 1px solid #cbd5e1; font-size: 0.9rem; color: #475569;">
+            <i class="fas fa-heart" style="color: #2563eb;"></i> Всегда открыта к новым задачам и знакомствам
+        </div>
+    </div>
+</body>
+</html>
