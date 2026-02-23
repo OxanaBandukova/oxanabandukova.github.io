@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оксана Бандукова · QA резюме</title>
+    <!-- Чистый современный шрифт Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 (иконки) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f1f4f8;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.5;
+            color: #1e2b37;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 30px 20px;
+        }
+
+        /* Компактная карточка — только данные */
+        .resume {
+            max-width: 900px;
+            width: 100%;
+            background: white;
+            border-radius: 30px;
+            box-shadow: 0 20px 40px -10px rgba(18, 40, 58, 0.2);
+            overflow: hidden;
+        }
+
+        /* Шапка с именем и контактами */
+        .header {
+            background: #1f2e3c;
+            color: white;
+            padding: 32px 40px 28px 40px;
+        }
+
+        .name {
+            font-size: 2.8rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            margin-bottom: 12px;
+        }
+
+        .contact-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px 32px;
+            margin-top: 12px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+            color: #e0ecf5;
+        }
+
+        .contact-item i {
+            width: 20px;
+            color: #8fb7d0;
+            font-size: 1.1rem;
+        }
+
+        /* Основной контент */
+        .content {
+            padding: 38px 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+
+        /* О себе — аккуратный блок */
+        .about {
+            background: #f4faff;
+            border-radius: 22px;
+            padding: 24px 28px;
+            border: 1px solid #dde9f2;
+        }
+
+        .section-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #0e3d57;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title i {
+            color: #547a99;
+            font-size: 1.3rem;
+        }
+
+        .about p {
+            color: #1f4057;
+            margin-bottom: 14px;
+            font-size: 0.98rem;
+        }
+
+        .about p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Разделитель */
+        .separator {
+            height: 1px;
+            background: linear-gradient(90deg, #cbdbe8, transparent);
+            margin: 8px 0 4px;
+        }
+
+        /* Опыт работы */
+        .job {
+            margin-bottom: 28px;
+        }
+
+        .job-header {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+
+        .job-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #12384d;
+        }
+
+        .job-place {
+            font-weight: 500;
+            color: #3b647d;
+        }
+
+        .job-date {
+            background: #e4eef6;
+            padding: 4px 15px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #1a5575;
+        }
+
+        .job-desc {
+            margin-top: 12px;
+            padding-left: 18px;
+            border-left: 3px solid #bbd5ea;
+        }
+
+        .job-desc p {
+            color: #244c63;
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+        }
+
+        /* список (достижения) */
+        .achievement-list {
+            list-style: none;
+            margin-top: 8px;
+        }
+
+        .achievement-list li {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+            color: #1c4056;
+        }
+
+        .achievement-list li i {
+            color: #5482a0;
+            font-size: 0.7rem;
+            margin-top: 6px;
+            width: 14px;
+        }
+
+        /* курсы / образование */
+        .edu-item {
+            background: #f9fcff;
+            border-radius: 18px;
+            padding: 20px 22px;
+            border: 1px solid #d4e2ee;
+        }
+
+        .edu-header {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            gap: 15px;
+            margin-bottom: 6px;
+        }
+
+        .edu-name {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #103f58;
+        }
+
+        .edu-date {
+            background: #dae8f2;
+            padding: 3px 12px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #164f70;
+        }
+
+        /* Навыки (чистые теги) */
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 12px;
+            margin-top: 10px;
+        }
+
+        .skill-tag {
+            background: #e9f0f6;
+            color: #1b4d68;
+            padding: 6px 16px;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 1px solid #c9ddec;
+        }
+
+        /* маленький footer */
+        .footer-note {
+            margin-top: 10px;
+            font-size: 0.8rem;
+            color: #6d8ba0;
+            text-align: right;
+            border-top: 1px dashed #c9dae9;
+            padding-top: 16px;
+        }
+
+        @media (max-width: 600px) {
+            .header { padding: 25px; }
+            .content { padding: 25px; }
+            .name { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="resume">
+
+    <!-- Шапка: только имя, email, телефон (по данным) -->
+    <div class="header">
+        <div class="name">Оксана Бандукова</div>
+        <div class="contact-row">
+            <div class="contact-item">
+                <i class="fas fa-phone-alt"></i> +7 999 112-10-89
+            </div>
+            <div class="contact-item">
+                <i class="far fa-envelope"></i> bandukovaoksana@mail.ru
+            </div>
+        </div>
+    </div>
+
+    <!-- Основная часть — только то, что написали -->
+    <div class="content">
+
+        <!-- 1. О себе (гармонизированный текст, только ваши факты) -->
+        <div class="about">
+            <div class="section-title">
+                <i class="far fa-smile"></i> О себе
+            </div>
+            <p>🖥️ Недавно прошла курс по manual QA. На практике работала с <strong>Jira, TestRail, Postman, Swagger</strong>. Составляла тест-кейсы и чек-листы, писала баг-репорты, проверяла UI/UX кроссбраузерно. Работала с REST API, SQL, Git. Освоила функциональное, регрессионное и smoke-тестирование, техники тест-дизайна, STLC. Ищу место, чтобы применить это на реальных проектах.</p>
+            <p>🎓 Сейчас преподаю информатику и физику в школе. Разрабатываю уроки по ФГОС, провожу контроль знаний. Обучаю компьютерной грамотности, работе с ПК и Microsoft Office. Подготовила девятиклассника к районной олимпиаде по физике (1 место). Внимание к деталям помогает замечать ошибки в заданиях и экспериментах.</p>
+            <p>⭐ До этого четыре года в Nestle занималась клиентским сервисом: вела полный цикл от встреч с гостями до финансов, организовывала дегустации и мерчандайзинг. Перевыполняла KPI на 100%+, стала финалистом национального конкурса Gold Capsule с квалификацией кофе-эксперт. Обучала новичков стандартам. Понимаю принципы тестирования, умею находить проблемы в интерфейсах и логике.</p>
+        </div>
+
+        <div class="separator"></div>
+
+        <!-- 2. Опыт (чётко по тексту: школа + Nestle) -->
+        <div>
+            <div class="section-title">
+                <i class="fas fa-briefcase"></i> Опыт работы
+            </div>
+
+            <!-- Преподавание (школа) -->
+            <div class="job">
+                <div class="job-header">
+                    <span class="job-title">Учитель информатики и физики</span>
+                    <span class="job-date">настоящее время</span>
+                </div>
+                <div class="job-place">Средняя общеобразовательная школа</div>
+                <div class="job-desc">
+                    <p>Разработка уроков по ФГОС, контроль знаний учеников. Обучение компьютерной грамотности, работе с ПК, ОС и Microsoft Office. Подготовка девятиклассника к районной олимпиаде по физике (1 место). Внимание к деталям помогает замечать ошибки в заданиях и экспериментах.</p>
+                </div>
+            </div>
+
+            <!-- Nestle -->
+            <div class="job">
+                <div class="job-header">
+                    <span class="job-title">Специалист клиентского сервиса</span>
+                    <span class="job-date">4 года</span>
+                </div>
+                <div class="job-place">Nestle</div>
+                <div class="job-desc">
+                    <p>Полный цикл обслуживания: от встреч с гостями до финансов. Организация дегустаций и мерчандайзинга для повышения продаж. Перевыполнение KPI на 100% и более. Финалист национального конкурса Gold Capsule (квалификация кофе-эксперт). Обучение новичков стандартам сервиса. Знание принципов тестирования помогает находить проблемы в интерфейсах и логике.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="separator"></div>
+
+        <!-- 3. Курс / образование (manual QA + школа) -->
+        <div>
+            <div class="section-title">
+                <i class="fas fa-graduation-cap"></i> Курс и образование
+            </div>
+
+            <div class="edu-item">
+                <div class="edu-header">
+                    <span class="edu-name">Ручное тестирование (Manual QA)</span>
+                    <span class="edu-date">2024</span>
+                </div>
+                <div style="margin-bottom: 10px; color: #2b5777;">Jira, TestRail, Postman, Swagger, SQL, Git, тест-дизайн</div>
+
+                <div style="margin-top: 18px;">
+                    <div style="font-weight: 500; color: #0c3f5a;">Основное образование:</div>
+                    <div style="margin-top: 6px;">Преподавание информатики и физики (педагогическое образование / вуз)</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. Ключевые навыки (собраны из вашего описания) -->
+        <div>
+            <div class="section-title">
+                <i class="fas fa-cog"></i> Навыки
+            </div>
+            <div class="skills-grid">
+                <span class="skill-tag">Jira</span>
+                <span class="skill-tag">TestRail</span>
+                <span class="skill-tag">Postman</span>
+                <span class="skill-tag">Swagger</span>
+                <span class="skill-tag">REST API</span>
+                <span class="skill-tag">SQL</span>
+                <span class="skill-tag">Git</span>
+                <span class="skill-tag">Тест-кейсы</span>
+                <span class="skill-tag">Баг-репорты</span>
+                <span class="skill-tag">Чек-листы</span>
+                <span class="skill-tag">Функциональное тест.</span>
+                <span class="skill-tag">Регрессионное тест.</span>
+                <span class="skill-tag">Smoke</span>
+                <span class="skill-tag">UI/UX</span>
+                <span class="skill-tag">Кроссбраузерное</span>
+                <span class="skill-tag">STLC</span>
+                <span class="skill-tag">Тест-дизайн</span>
+                <span class="skill-tag">Microsoft Office</span>
+                <span class="skill-tag">ОС / ПК</span>
+            </div>
+        </div>
+
+        <!-- маленькая подпись для github -->
+        <div class="footer-note">
+            <i class="far fa-file-code"></i> резюме · только предоставленные данные
+        </div>
+    </div>
+</div>
+</body>
+</html>
